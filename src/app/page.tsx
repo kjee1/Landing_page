@@ -14,8 +14,7 @@ export default function Home() {
             <div className="space-y-8">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="text-red-700">Superpower</span>{' '}
-                <span className="text-blue-700">Your</span>{' '}
-                <span className="text-black">Newsletter</span>
+                <span className="text-black">Your Newsletter</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
