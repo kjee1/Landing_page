@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 const FORM_ACTION = 'https://app.kit.com/forms/8220430/subscriptions';
+const RED = '#b91c1c'; // Tailwind 'text-red-700'
 
 const ConvertKitForm = () => {
   const [email, setEmail] = useState('');
@@ -47,7 +48,8 @@ const ConvertKitForm = () => {
             name="email_address"
             required
             placeholder="Enter your email"
-            className="flex-1 rounded-l-lg border-2 border-[#5B3DF6] border-r-0 px-6 py-4 text-lg focus:outline-none focus:ring-2 focus:ring-[#5B3DF6] placeholder-gray-400"
+            className="flex-1 rounded-l-lg border-2 border-r-0 px-6 py-4 text-lg focus:outline-none focus:ring-2 placeholder-gray-400"
+            style={{ borderColor: RED, boxShadow: 'none' }}
             value={email}
             onChange={e => setEmail(e.target.value)}
             disabled={loading}
@@ -55,7 +57,8 @@ const ConvertKitForm = () => {
           />
           <button
             type="submit"
-            className="rounded-r-lg bg-[#5B3DF6] text-white font-semibold px-8 py-4 text-lg hover:bg-[#4326c7] transition-colors disabled:opacity-60"
+            className="rounded-r-lg text-white font-semibold px-8 py-4 text-lg transition-colors disabled:opacity-60"
+            style={{ backgroundColor: RED }}
             disabled={loading}
           >
             {loading ? '...' : 'Update Me!'}
