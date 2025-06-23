@@ -31,10 +31,11 @@ export default function Home() {
             {/* Image */}
             <div className="relative">
               <div className="relative h-96 lg:h-[500px] w-full">
-                <img
+                <Image
                   src="/e17a9ec2-b876-4909-a5f2-bb97745c4051.png"
                   alt="Newsletter Hero"
-                  className="object-contain w-full h-full"
+                  fill
+                  className="object-contain"
                 />
               </div>
             </div>
@@ -98,13 +99,13 @@ export default function Home() {
             </h2>
             <div className="prose prose-lg mx-auto text-gray-700 leading-relaxed">
               <p className="text-xl mb-6">
-                We're newsletter nerds, just like you. We create, write, and sometimes wrestle with our own newsletters — so we started building tools to make the whole process easier (and way more fun).
+                We&apos;re newsletter nerds, just like you. We create, write, and sometimes wrestle with our own newsletters — so we started building tools to make the whole process easier (and way more fun).
               </p>
               <p className="text-xl mb-6">
-                We're also engineers who love playing with the latest AI tools to see what's possible. Our mission? Build the stuff we wish we had when we were just getting started.
+                We&apos;re also engineers who love playing with the latest AI tools to see what&apos;s possible. Our mission? Build the stuff we wish we had when we were just getting started.
               </p>
               <p className="text-xl">
-                Learn from our trial-and-error, skip the headaches, and make your newsletter shine with the tools we're creating.
+                Learn from our trial-and-error, skip the headaches, and make your newsletter shine with the tools we&apos;re creating.
               </p>
             </div>
           </div>
