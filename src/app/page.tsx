@@ -18,7 +18,9 @@ export default function Home() {
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
-                Transform your newsletter into a powerful engagement machine with AI-powered tools designed for creators.
+                Writing builds empires. But great newsletters take time.
+                Most AI tools sound robotic—and still force you to do the hard thinking.
+                We&apos;re building tools that cut your writing time in half, improve your storytelling, and help you build an audience that actually listens.
               </p>
 
               {/* ConvertKit Email Signup Form */}
@@ -98,7 +100,7 @@ export default function Home() {
             </h2>
             <div className="prose prose-lg mx-auto text-gray-700 leading-relaxed">
               <p className="text-xl mb-6">
-                We&apos;re newsletter nerds, just like you. We create, write, and sometimes wrestle with our own newsletters — so we started building tools to make the whole process easier (and way more fun).
+                We&apos;re content nerds, just like you. We create, write, and sometimes wrestle with our own newsletters — so we started building tools to make the whole process easier (and way more fun).
               </p>
               <p className="text-xl mb-6">
                 We&apos;re also engineers who love playing with the latest AI tools to see what&apos;s possible. Our mission? Build the stuff we wish we had when we were just getting started.

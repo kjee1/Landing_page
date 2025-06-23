@@ -1,25 +1,74 @@
-import Script from 'next/script';
+import { useState } from 'react';
+
+const FORM_ACTION = 'https://app.kit.com/forms/8220430/subscriptions';
 
 const ConvertKitForm = () => {
+  const [email, setEmail] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setSuccess(false);
+    try {
+      const res = await fetch(FORM_ACTION, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `email_address=${encodeURIComponent(email)}`,
+      });
+      if (res.ok) {
+        setSuccess(true);
+        setEmail('');
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `
-            <form action="https://app.kit.com/forms/8220430/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="8220430" data-uid="4681dd9360" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! We will follow up when we are live!&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400; background-color: rgb(249, 250, 251); padding: 12px; font-size: 16px; width: 100%; margin-bottom: 12px;"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 600; padding: 16px 32px; font-size: 18px; width: 100%; border: none; cursor: pointer; transition: background-color 0.2s;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Update me!</span></button></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with Kit</a></div></div></form>
-            <style>
-              .formkit-form[data-uid="4681dd9360"] .formkit-alert-success {
-                background: #f9fafb !important;
-                border-color: #10bf7a !important;
-                color: #000000 !important;
-                font-weight: 600;
-              }
-            </style>
-          `
-        }}
-      />
-      <Script src="https://f.convertkit.com/ckjs/ck.5.js" />
-    </>
+    <div className="w-full max-w-2xl mx-auto">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4"
+        autoComplete="off"
+      >
+        <div className="flex w-full">
+          <input
+            type="email"
+            name="email_address"
+            required
+            placeholder="Enter your email"
+            className="flex-1 rounded-l-lg border-2 border-[#5B3DF6] border-r-0 px-6 py-4 text-lg focus:outline-none focus:ring-2 focus:ring-[#5B3DF6] placeholder-gray-400"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            disabled={loading}
+            aria-label="Email address"
+          />
+          <button
+            type="submit"
+            className="rounded-r-lg bg-[#5B3DF6] text-white font-semibold px-8 py-4 text-lg hover:bg-[#4326c7] transition-colors disabled:opacity-60"
+            disabled={loading}
+          >
+            {loading ? '...' : 'Update Me!'}
+          </button>
+        </div>
+      </form>
+      {success && (
+        <p className="text-green-700 font-semibold mt-4">Success! We will follow up when we are live!</p>
+      )}
+      {error && (
+        <p className="text-red-600 font-semibold mt-4">{error}</p>
+      )}
+    </div>
   );
 };
 
