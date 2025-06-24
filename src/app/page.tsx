@@ -18,9 +18,7 @@ export default function Home() {
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
-                Writing builds empires. But great newsletters take time.
-                Most AI tools sound robotic—and still force you to do the hard thinking.
-                We&apos;re building tools that cut your writing time in half, improve your storytelling, and help you build an audience that actually listens.
+                Write better subject lines and stories in a fraction of the time.
               </p>
 
               {/* ConvertKit Email Signup Form */}
