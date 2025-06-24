@@ -48,7 +48,7 @@ const ConvertKitForm = () => {
             name="email_address"
             required
             placeholder="Enter your email"
-            className="flex-1 rounded-l-lg border-2 border-r-0 px-6 py-4 text-lg focus:outline-none focus:ring-2 placeholder-gray-400"
+            className="flex-1 rounded-l-lg border-2 border-r-0 px-6 py-4 text-lg focus:outline-none focus:ring-2 placeholder-gray-400 text-gray-800"
             style={{ borderColor: RED, boxShadow: 'none' }}
             value={email}
             onChange={e => setEmail(e.target.value)}
