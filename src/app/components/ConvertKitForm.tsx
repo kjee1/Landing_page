@@ -61,7 +61,7 @@ const ConvertKitForm = () => {
             style={{ backgroundColor: RED }}
             disabled={loading}
           >
-            {loading ? '...' : 'Update Me!'}
+            {loading ? '...' : 'Join the Waitlist!'}
           </button>
         </div>
       </form>
